@@ -15,10 +15,10 @@ else
 all: module
 
 module:
-	KBUILD_VERBOSE=1 ARCH=arm CROSS_COMPILE=$(CROSS_COMPILE) $(MAKE) -C $(KERNEL_DIR) M=`pwd`
+    KBUILD_VERBOSE=1 ARCH=arm CROSS_COMPILE=$(CROSS_COMPILE) $(MAKE) -C $(KERNEL_DIR) M=`pwd`
 
 clean:
-	$(MAKE) -C $(KERNEL_DIR) M=`pwd` clean
+    $(MAKE) -C $(KERNEL_DIR) M=`pwd` clean
 
 endif
 
