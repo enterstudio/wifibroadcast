@@ -1,0 +1,18 @@
+
+/build
+
+## ignore in-source build artifacts ##
+CMakeFiles
+Makefile
+*.make
+*.cmake
+*.marks
+link.txt
+/CMakeCache.txt
+/.cproject
+/.project
+/.idea
+/bin
+/doc
+*~
+.DS_Store
