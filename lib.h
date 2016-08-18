@@ -1,11 +1,10 @@
 #pragma once
 
-
-
 #include <stdint.h>
 #include <stdlib.h>
+#include <time.h>
 
-#include "wifibroadcast.h"
+#include "defines.h"
 
 typedef struct {
 	uint32_t received_packet_cnt;

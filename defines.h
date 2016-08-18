@@ -1,20 +1,18 @@
 
-
 #pragma once
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <resolv.h>
-#include <string.h>
-#include <utime.h>
-#include <unistd.h>
-#include <getopt.h>
-#include <pcap.h>
-#include <endian.h>
-#include <fcntl.h>
-#include <time.h>
-#include <sys/mman.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <errno.h>
+// #include <resolv.h>
+// #include <string.h>
+// #include <utime.h>
+// #include <unistd.h>
+// #include <getopt.h>
+// #include <pcap.h>
+// #include <fcntl.h>
+// #include <sys/mman.h>
+// #include <machine/endian.h>
 
 typedef unsigned int u32;
 typedef unsigned short u16;

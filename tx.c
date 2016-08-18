@@ -19,13 +19,13 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-
-#include <time.h>
+#include <resolv.h>
+#include <string.h>
+#include <getopt.h>
+#include <pcap.h>
 
 #include "fec.h"
-
 #include "lib.h"
-#include "wifibroadcast.h"
 
 #define MAX_PACKET_LENGTH 4192
 #define MAX_USER_PACKET_LENGTH 1450

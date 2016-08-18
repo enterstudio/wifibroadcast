@@ -1,17 +1,12 @@
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
 #include <resolv.h>
-#include <string.h>
-#include <utime.h>
 #include <unistd.h>
-#include <getopt.h>
-#include <pcap.h>
-#include <endian.h>
 #include <fcntl.h>
 #include <sys/mman.h>
 
-#include "lib.h"
+#include "../lib.h"
 
 wifibroadcast_rx_status_t *status_memory_open(void) {
 	int fd = shm_open("/wifibroadcast_rx_status_0", O_RDWR, S_IRUSR | S_IWUSR);

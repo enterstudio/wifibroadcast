@@ -15,12 +15,18 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <resolv.h>
+#include <string.h>
+#include <getopt.h>
+#include <pcap.h>
 
 #include "fec.h"
-
-
 #include "lib.h"
-#include "wifibroadcast.h"
 #include "radiotap.h"
 
 #define MAX_PACKET_LENGTH 4192
@@ -30,9 +36,6 @@
 #define DEBUG 0
 #define debug_print(fmt, ...) \
             do { if (DEBUG) fprintf(stderr, fmt, __VA_ARGS__); } while (0)
-
-
-
 
 
 // this is where we store a summary of the

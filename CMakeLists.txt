@@ -11,23 +11,23 @@ endif()
 find_library(FOUND_PCAP pcap)
 message(STATUS "FOUND_PCAP -> ${FOUND_PCAP}")
 
-add_library(radiotap radiotap.h radiotap.c ieee80211_radiotap.h)
-add_library(wbcLib lib.h lib.c radiotap.h radiotap.c fec.h fec.c)
-target_link_libraries(wbcLib radiotap)
+add_subdirectory(radiotap)
 
-target_link_libraries(wbcLib ${FOUND_PCAP})
+add_library(wifibroadcast defines.h lib.h lib.c fec.h fec.c)
+
+target_link_libraries(wifibroadcast ${FOUND_PCAP})
 if(UNIX AND NOT APPLE)
-  target_link_libraries(wbcLib rt)
+  target_link_libraries(wifibroadcast rt)
 endif()
 
 add_executable(tx tx.c)
-target_link_libraries(tx wbcLib)
+target_link_libraries(tx wifibroadcast)
 
-add_executable(rx rx.c)
-target_link_libraries(rx wbcLib)
+if(TARGET radiotap)
+  add_executable(rx rx.c)
+  target_link_libraries(rx wifibroadcast radiotap)
+else()
+  message(STATUS "Can't build rx without radiotap")
+endif()
 
-add_executable(tx_test tx_test.c)
-target_link_libraries(tx_test wbcLib)
-
-add_executable(rx_status_test rx_status_test.c)
-target_link_libraries(rx_status_test wbcLib)
+add_subdirectory(tests)

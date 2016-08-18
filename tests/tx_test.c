@@ -1,18 +1,12 @@
 #include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include <unistd.h>
+#include <string.h>
+#include <pcap.h>
 
-#include <time.h>
+#include "../fec.h"
+#include "../lib.h"
 
-#include "fec.h"
-
-#include "lib.h"
-#include "wifibroadcast.h"
-
-int
-main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	char szErrbuf[PCAP_ERRBUF_SIZE];
 	int pkt_idx = 1;
 	pcap_t *pcap = NULL;
@@ -63,11 +57,10 @@ main(int argc, char *argv[])
 
     /* tight loop with pcap inject */
     while(1) {
-        int r;
-        r = pcap_inject(pcap, pkt, sizeof(pkt));
+        int r = pcap_inject(pcap, pkt, sizeof(pkt));
         if(r != sizeof(pkt)) {
             perror("can't inject packet");
-            printf("pcap_inject() returns %d (requested %d)\n", r, sizeof(pkt));
+            printf("pcap_inject() returns %d (requested %lu)\n", r, sizeof(pkt));
             break;
         }
 

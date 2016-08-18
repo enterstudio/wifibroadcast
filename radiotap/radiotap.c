@@ -4,8 +4,9 @@
  * Copyright 2007		Andy Green <andy@warmcat.com>
  */
 
-#include "wifibroadcast.h"
 #include "radiotap.h"
+#include "ieee80211_radiotap.h"
+#include "wifibroadcast.h"
 
 /**
  * ieee80211_radiotap_iterator_init - radiotap parser iterator initialization
