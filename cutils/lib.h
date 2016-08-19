@@ -1,5 +1,9 @@
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 #include <stdlib.h>
 #include <time.h>
@@ -36,3 +40,7 @@ typedef struct { uint32_t sequence_number; } __attribute__((packed)) wifi_packet
 typedef struct { uint32_t data_length; } __attribute__((packed)) payload_header_t;
 
 packet_buffer_t* lib_alloc_packet_buffer_list(size_t num_packets, size_t packet_length);
+
+#ifdef __cplusplus
+}
+#endif

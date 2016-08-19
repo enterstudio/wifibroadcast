@@ -12,20 +12,15 @@ find_library(FOUND_PCAP pcap)
 message(STATUS "FOUND_PCAP -> ${FOUND_PCAP}")
 
 add_subdirectory(radiotap)
+add_subdirectory(cutils)
+add_subdirectory(utils)
 
-add_library(wifibroadcast defines.h lib.h lib.c fec.h fec.c)
-
-target_link_libraries(wifibroadcast ${FOUND_PCAP})
-if(UNIX AND NOT APPLE)
-  target_link_libraries(wifibroadcast rt)
-endif()
-
-add_executable(tx tx.c)
-target_link_libraries(tx wifibroadcast)
+add_executable(tx tx.cpp)
+target_link_libraries(tx cutils utils)
 
 if(TARGET radiotap)
-  add_executable(rx rx.c)
-  target_link_libraries(rx wifibroadcast radiotap)
+  add_executable(rx rx.cpp)
+  target_link_libraries(rx cutils radiotap)
 else()
   message(STATUS "Can't build rx without radiotap")
 endif()

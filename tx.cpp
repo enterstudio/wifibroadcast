@@ -24,8 +24,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "fec.h"
-#include "lib.h"
+#include <cutils/fec.h>
+#include <cutils/lib.h>
 
 #define MAX_PACKET_LENGTH 4192
 #define MAX_USER_PACKET_LENGTH 1450
@@ -49,11 +49,10 @@ int            g_retries = 0;
 /* this is the template radiotap header we send packets out with */
 
 static const u8 u8aRadiotapHeader[] = {
-
     0x00, 0x00,             // <-- radiotap version
     0x0c, 0x00,             // <- radiotap header lengt
     0x04, 0x80, 0x00, 0x00, // <-- bitmap
-    0x22, 0x0,  0x18, 0x00};
+    0x22, 0x0,  0x18, 0x00 };
 
 // the last byte of the mac address is recycled as a port number
 #define SRC_MAC_LASTBYTE 15
